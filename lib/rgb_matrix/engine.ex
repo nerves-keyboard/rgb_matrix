@@ -6,7 +6,7 @@ defmodule RGBMatrix.Engine do
 
   use GenServer
 
-  alias Layout.LED
+  alias KeyboardLayout.LED
   alias RGBMatrix.Animation
 
   @type frame :: %{LED.id() => RGBMatrix.any_color_model()}

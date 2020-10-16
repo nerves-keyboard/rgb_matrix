@@ -3,7 +3,7 @@ defmodule RGBMatrix.Animation do
   Provides the behaviour and interface for working with animations.
   """
 
-  alias Layout.LED
+  alias KeyboardLayout.LED
   alias __MODULE__.Config
 
   defstruct [:type, :config, :state]

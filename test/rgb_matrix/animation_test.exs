@@ -1,7 +1,7 @@
 defmodule RGBMatrix.AnimationTest do
   use ExUnit.Case
 
-  alias Layout.LED
+  alias KeyboardLayout.LED
   alias RGBMatrix.Animation
   alias RGBMatrix.Animation.Config.FieldType.{Integer, Option}
 
@@ -91,7 +91,7 @@ defmodule RGBMatrix.AnimationTest do
       @frame frame
       @leds leds
 
-      field :test_option, :option,
+      field(:test_option, :option,
         default: :a,
         options: ~w(a b)a,
         doc: [
@@ -99,8 +99,9 @@ defmodule RGBMatrix.AnimationTest do
           description: "valid option",
           other: :atom
         ]
+      )
 
-      field :test_integer, :integer,
+      field(:test_integer, :integer,
         default: 0,
         min: 0,
         max: 5,
@@ -109,6 +110,7 @@ defmodule RGBMatrix.AnimationTest do
           name: "Testing Integer",
           description: "valid integer"
         ]
+      )
 
       @impl true
       def new(leds, config) do

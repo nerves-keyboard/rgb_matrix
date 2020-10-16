@@ -6,11 +6,11 @@ defmodule RGBMatrix.Animation.HueWave do
   use RGBMatrix.Animation
 
   alias Chameleon.HSV
-  alias Layout.LED
+  alias KeyboardLayout.LED
 
   import RGBMatrix.Utils, only: [mod: 2]
 
-  field :speed, :integer,
+  field(:speed, :integer,
     default: 4,
     min: 0,
     max: 32,
@@ -20,8 +20,9 @@ defmodule RGBMatrix.Animation.HueWave do
       Controls the speed at which the wave moves across the matrix.
       """
     ]
+  )
 
-  field :width, :integer,
+  field(:width, :integer,
     default: 20,
     min: 10,
     max: 100,
@@ -32,8 +33,9 @@ defmodule RGBMatrix.Animation.HueWave do
       The rate of change of the wave, higher values means it's more spread out.
       """
     ]
+  )
 
-  field :direction, :option,
+  field(:direction, :option,
     default: :right,
     options: ~w(right left up down)a,
     doc: [
@@ -42,6 +44,7 @@ defmodule RGBMatrix.Animation.HueWave do
       The direction the wave travels across the matrix.
       """
     ]
+  )
 
   defmodule State do
     @moduledoc false

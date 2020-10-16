@@ -4,6 +4,7 @@ defmodule RGBMatrix.EngineTest do
   alias RGBMatrix.{Animation, Engine}
 
   setup_all [
+    :start_engine,
     :create_leds,
     :create_frame,
     :create_animation
@@ -125,9 +126,9 @@ defmodule RGBMatrix.EngineTest do
   end
 
   defp create_leds(_context),
-    do: [leds: [Layout.LED.new(:l1, 0, 0)]]
+    do: [leds: [KeyboardLayout.LED.new(:l1, 0, 0)]]
 
-  # A paint_fn is necessary for regstration with the engine.
+  # A paint_fn is necessary for registration with the engine.
   # This must be run as part of the setup for each test to make sure the pid
   # is that of the test process.
   defp create_paint_fn(_context) do
@@ -159,4 +160,9 @@ defmodule RGBMatrix.EngineTest do
 
   defp set_animation(%{animation: animation}),
     do: :ok = Engine.set_animation(animation)
+
+  defp start_engine(_context) do
+    {:ok, pid} = Engine.start_link([])
+    [engine_pid: pid]
+  end
 end

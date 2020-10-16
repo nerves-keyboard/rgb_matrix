@@ -1,0 +1,4 @@
+%{
+  "chameleon": {:hex, :chameleon, "2.3.0", "621a558db1c70b069b8b13aa1dbc3231f2210527742a2c556c8b480f07b80eaa", [:mix], [], "hexpm", "166eafb4d1df4ce8edf581499d584e26ba5b2e53267bc2630b4e9db0d88e067f"},
+  "keyboard_layout": {:git, "https://github.com/nerves-keyboard/keyboard_layout.git", "7a92ffc05f190ab2e7f7da879f588800925b5a50", []},
+}
