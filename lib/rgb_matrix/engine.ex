@@ -152,7 +152,6 @@ defmodule RGBMatrix.Engine do
     state =
       %State{state | animation: nil, last_frame: %{}}
       |> cancel_timer()
-      # |> schedule_next_render(0)
 
     {:noreply, state}
   end
