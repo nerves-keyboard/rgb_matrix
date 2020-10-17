@@ -3,8 +3,8 @@ defmodule RGBMatrix.Animation do
   Provides the behaviour and interface for working with animations.
   """
 
-  alias KeyboardLayout.LED
   alias __MODULE__.Config
+  alias KeyboardLayout.LED
 
   defstruct [:type, :config, :state]
 
@@ -16,14 +16,15 @@ defmodule RGBMatrix.Animation do
   @type animation_state :: any
   @type render_in :: non_neg_integer() | :never | :ignore
   @type type ::
-          __MODULE__.CycleAll
+          __MODULE__.Breathing
+          | __MODULE__.CycleAll
           | __MODULE__.HueWave
           | __MODULE__.Pinwheel
           | __MODULE__.RandomSolid
           | __MODULE__.RandomKeypresses
           | __MODULE__.SolidColor
-          | __MODULE__.Breathing
           | __MODULE__.SolidReactive
+          | nil
 
   @callback new(leds :: [LED.t()], config :: Config.t()) :: animation_state
   @callback render(state :: animation_state, config :: Config.t()) ::
@@ -34,17 +35,18 @@ defmodule RGBMatrix.Animation do
   @doc """
   Returns a list of the available types of animations.
   """
-  @spec types :: [type]
+  @spec types :: [type, ...]
   def types do
     [
+      __MODULE__.Breathing,
       __MODULE__.CycleAll,
       __MODULE__.HueWave,
       __MODULE__.Pinwheel,
       __MODULE__.RandomSolid,
       __MODULE__.RandomKeypresses,
       __MODULE__.SolidColor,
-      __MODULE__.Breathing,
-      __MODULE__.SolidReactive
+      __MODULE__.SolidReactive,
+      nil
     ]
   end
 

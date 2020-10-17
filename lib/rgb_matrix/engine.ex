@@ -110,7 +110,7 @@ defmodule RGBMatrix.Engine do
   defp cancel_timer(%{timer: nil} = state), do: state
 
   defp cancel_timer(state) do
-    Process.cancel_timer(state.timer)
+    _ = Process.cancel_timer(state.timer)
     %{state | timer: nil}
   end
 
