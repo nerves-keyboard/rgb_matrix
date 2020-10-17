@@ -115,6 +115,10 @@ defmodule RGBMatrix.Engine do
   end
 
   @impl true
+  def handle_info(:render, %{animation: nil} = state) do
+    {:noreply, state}
+  end
+
   def handle_info(:render, state) do
     {render_in, new_colors, animation} = Animation.render(state.animation)
 
@@ -144,6 +148,15 @@ defmodule RGBMatrix.Engine do
   end
 
   @impl GenServer
+  def handle_cast({:set_animation, nil}, state) do
+    state =
+      %State{state | animation: nil, last_frame: %{}}
+      |> cancel_timer()
+      # |> schedule_next_render(0)
+
+    {:noreply, state}
+  end
+
   def handle_cast({:set_animation, animation}, state) do
     state =
       %State{state | animation: animation, last_frame: %{}}
@@ -153,6 +166,10 @@ defmodule RGBMatrix.Engine do
   end
 
   @impl GenServer
+  def handle_cast({:interact, _led}, %{animation: nil} = state) do
+    {:noreply, state}
+  end
+
   def handle_cast({:interact, led}, state) do
     {render_in, animation} = Animation.interact(state.animation, led)
 
