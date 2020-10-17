@@ -18,6 +18,10 @@ defmodule RGBMatrix.EngineTest do
     assert Engine.set_animation(animation) == :ok
   end
 
+  test "can set no animation" do
+    assert Engine.set_animation(nil) == :ok
+  end
+
   setup :set_animation
 
   test "can register a paintable function", %{
@@ -48,6 +52,15 @@ defmodule RGBMatrix.EngineTest do
       interaction = hd(leds)
       assert Engine.interact(interaction) == :ok
       assert_receive {:interact, ^interaction}
+    end
+
+    test "interact with no active animation", %{
+      leds: leds,
+    } do
+      :ok = Engine.set_animation(nil)
+      interaction = hd(leds)
+
+      assert Engine.interact(interaction) == :ok
     end
   end
 
