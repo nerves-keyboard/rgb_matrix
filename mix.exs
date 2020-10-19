@@ -78,6 +78,7 @@ defmodule RGBMatrix.MixProject do
       {:chameleon, "~> 2.2"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:keyboard_layout, "~> 0.1"}
     ]
