@@ -43,8 +43,7 @@ defmodule RGBMatrix.MixProject do
 
   defp dialyzer do
     [
-      plt_core_path: "_build/#{Mix.env()}",
-      flags: [:unmatched_returns, :error_handling, :underspecs]
+      plt_core_path: "_build/#{Mix.env()}"
     ]
   end
 
