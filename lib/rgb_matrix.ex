@@ -1,12 +1,15 @@
 defmodule RGBMatrix do
-  @moduledoc false
+  @moduledoc """
+  RGBMatrix is a rendering engine for the Nerves Keyboard project. It schedules
+  and renders frames. There is a small selection of animations built in.
+  """
 
   @type any_color_model ::
-          Chameleon.Color.RGB.t()
-          | Chameleon.Color.CMYK.t()
-          | Chameleon.Color.Hex.t()
-          | Chameleon.Color.HSL.t()
-          | Chameleon.Color.HSV.t()
-          | Chameleon.Color.Keyword.t()
-          | Chameleon.Color.Pantone.t()
+          Chameleon.RGB.t()
+          | Chameleon.CMYK.t()
+          | Chameleon.Hex.t()
+          | Chameleon.HSL.t()
+          | Chameleon.HSV.t()
+          | Chameleon.Keyword.t()
+          | Chameleon.Pantone.t()
 end
