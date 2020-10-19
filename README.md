@@ -2,6 +2,8 @@
 
 [![CI Status](https://github.com/nerves-keyboard/rgb_matrix/workflows/CI/badge.svg)](https://github.com/nerves-keyboard/rgb_matrix/actions)
 [![codecov](https://codecov.io/gh/nerves-keyboard/rgb_matrix/branch/master/graph/badge.svg)](https://codecov.io/gh/nerves-keyboard/rgb_matrix)
+[![Hex.pm Version](https://img.shields.io/hexpm/v/rgb_matrix.svg?style=flat)](https://hex.pm/packages/rgb_matrix)
+[![License](https://img.shields.io/hexpm/l/rgb_matrix.svg)](LICENSE.md)
 
 RGBMatrix is a rendering engine for the Nerves Keyboard project. It schedules
 and renders frames. There is a small selection of animations built in.
@@ -19,7 +21,7 @@ in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:rgb_matrix, github: "nerves-keyboard/rgb_matrix"}
+    {:rgb_matrix, "~> 0.1"}
   ]
 end
 ```

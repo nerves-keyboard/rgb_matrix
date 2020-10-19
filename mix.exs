@@ -2,18 +2,21 @@ defmodule RGBMatrix.MixProject do
   use Mix.Project
 
   @version "0.1.0"
+  @source_url "https://github.com/nerves-keyboard/rgb_matrix"
 
   def project do
     [
       app: :rgb_matrix,
       version: @version,
       elixir: "~> 1.10",
-      deps: deps(),
-      description: description(),
-      dialyzer: dialyzer(),
-      preferred_cli_env: preferred_cli_env(),
       start_permanent: Mix.env() == :prod,
-      test_coverage: [tool: ExCoveralls]
+      preferred_cli_env: preferred_cli_env(),
+      test_coverage: [tool: ExCoveralls],
+      dialyzer: dialyzer(),
+      description: description(),
+      package: package(),
+      docs: docs(),
+      deps: deps()
     ]
   end
 
@@ -21,6 +24,51 @@ defmodule RGBMatrix.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp preferred_cli_env do
+    [
+      coveralls: :test,
+      "coveralls.detail": :test,
+      "coveralls.post": :test,
+      "coveralls.html": :test,
+      "coveralls.json": :test
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "_build/#{Mix.env()}"
+    ]
+  end
+
+  defp description do
+    """
+    Nerves Keyborad rendering engine and animation library
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", ".formatter.exs", "mix.exs", "README.md", "LICENSE.md"],
+      maintainers: ["Chris Dosé <chris.dose@gmail.com>"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @source_url,
+        "Readme" => "#{@source_url}/blob/v#{@version}/README.md"
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      source_url: @source_url,
+      extras: [
+        "README.md": [title: "README"],
+        "LICENSE.md": [title: "LICENSE"]
+      ]
     ]
   end
 
@@ -32,29 +80,6 @@ defmodule RGBMatrix.MixProject do
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:keyboard_layout, github: "nerves-keyboard/keyboard_layout"}
-    ]
-  end
-
-  defp description do
-    """
-    Nerves Keyborad rendering engine and animation library
-    """
-  end
-
-  defp dialyzer do
-    [
-      plt_core_path: "_build/#{Mix.env()}"
-    ]
-  end
-
-  defp preferred_cli_env do
-    [
-      coveralls: :test,
-      "coveralls.detail": :test,
-      "coveralls.post": :test,
-      "coveralls.html": :test,
-      "coveralls.json": :test,
-      credo: :test
     ]
   end
 end
