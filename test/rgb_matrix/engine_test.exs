@@ -55,7 +55,7 @@ defmodule RGBMatrix.EngineTest do
     end
 
     test "interact with no active animation", %{
-      leds: leds,
+      leds: leds
     } do
       :ok = Engine.set_animation(nil)
       interaction = hd(leds)

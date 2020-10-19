@@ -1,13 +1,19 @@
 defmodule RGBMatrix.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       app: :rgb_matrix,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.10",
+      deps: deps(),
+      description: description(),
+      dialyzer: dialyzer(),
+      preferred_cli_env: preferred_cli_env(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -22,7 +28,33 @@ defmodule RGBMatrix.MixProject do
   defp deps do
     [
       {:chameleon, "~> 2.2"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:keyboard_layout, github: "nerves-keyboard/keyboard_layout"}
+    ]
+  end
+
+  defp description do
+    """
+    Nerves Keyborad rendering engine and animation library
+    """
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "_build/#{Mix.env()}"
+    ]
+  end
+
+  defp preferred_cli_env do
+    [
+      coveralls: :test,
+      "coveralls.detail": :test,
+      "coveralls.post": :test,
+      "coveralls.html": :test,
+      "coveralls.json": :test,
+      credo: :test
     ]
   end
 end
