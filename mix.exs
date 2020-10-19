@@ -79,7 +79,7 @@ defmodule RGBMatrix.MixProject do
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
-      {:keyboard_layout, github: "nerves-keyboard/keyboard_layout"}
+      {:keyboard_layout, "~> 0.1"}
     ]
   end
 end
