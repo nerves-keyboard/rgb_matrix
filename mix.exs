@@ -45,7 +45,7 @@ defmodule RGBMatrix.MixProject do
 
   defp description do
     """
-    Nerves Keyborad rendering engine and animation library
+    Nerves Keyboard rendering engine and animation library
     """
   end
 
